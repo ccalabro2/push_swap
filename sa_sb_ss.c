@@ -1,19 +1,18 @@
 #include "push_swap.h"
 
-void	ft_swap(t_stack **src)
+void	ft_swap(t_stack **head)
 {
-	int len;
-    len = stack_len(*src);
-    
-    if (*src == NULL || src == NULL || len <= 1)
-    	return ;
-	*src = (*src)->next;
-	(*src)->prev->prev = *src;
-	(*src)->prev->next = (*src)->next;
-	if ((*src)->next)
-		(*src)->next->prev = (*src)->prev;
-	(*src)->next = (*src)->prev;
-	(*src)->prev = NULL;
+    if (head == NULL || *head == NULL || (*head)->next == NULL)
+	{
+		return ;
+	}
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 }
 
 void	sa(t_stack **a)

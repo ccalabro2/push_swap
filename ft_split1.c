@@ -2,23 +2,23 @@
 
 int count_words(char *s)
 {
-    int count;
+    int len_word;
     int i;
 
-    count = 0;
+    len_word = 0;
     i = 0;
     while (s[i])
     {
         while (s[i] == ' ' && s[i])
             i++;
-        if (s[i] != ' ' s[i])
+        if (s[i] != ' '  && s[i])
         {
-            count++;
+            len_word++;
             while (s[i] != ' ' && s[i])
                 i++;
         }
     }
-    return (count);
+    return (len_word);
 }
 
 char **matrix_argv(int n)
@@ -33,7 +33,50 @@ matrix = (char **)malloc((n + program_name + 1) * sizeof(char *));
     return (matrix);
 }
 
-void    fill_matrix_argv(char *src, char **martix, int n_words)
+char	*element_matrix_argv(char *src)
+{
+	int			start;
+	char		*output;
+	static int	i;
+	int			len_word;
+
+	len_word = 0;
+	if (src[i] != '\0')
+	{
+		while (src[i] == ' ' && src[i])
+			i++;
+		while (src[i] != ' ' && src[i])
+		{
+			len_word++;
+			i++;
+		}
+	}
+	output = (char *)malloc((len_word + 1) * sizeof(char));
+	if (output == NULL)
+		return (NULL);
+	output[len_word] = '\0';
+	start = i - len_word;
+	ft_cpy(output, src, start, len_word);
+	return (output);
+}
+
+//mdificare
+void	free_elements_matrix_argv(char **matrix, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j <= i)
+	{
+		free(matrix[j]);
+		j++;
+	}
+	free(matrix);
+	matrix = NULL;
+}
+
+
+void    fill_matrix(char *src, char **matrix, int n_words)
 {
 	int	i;
 
@@ -51,47 +94,4 @@ void    fill_matrix_argv(char *src, char **martix, int n_words)
 		i++;
 	}
 	matrix[i] = NULL;
-}
-
-//modificare
-char	*element_in_matrix_argv(char *src)
-{
-	int			start;
-	char		*output;
-	static int	i;
-	int			count;
-
-	count = 0;
-	if (src[i] != '\0')
-	{
-		while (src[i] == ' ' && src[i])
-			i++;
-		while (src[i] != ' ' && src[i])
-		{
-			count++;
-			i++;
-		}
-	}
-	output = (char *)malloc((count + 1) * sizeof(char));
-	if (output == NULL)
-		return (NULL);
-	output[count] = '\0';
-	start = i - count;
-	ft_cpy(output, src, start, count);
-	return (output);
-}
-
-//mdificare
-void	free_elements_matrix_argv(char **matrix, int i)
-{
-	int	j;
-
-	j = 0;
-	while (j <= i)
-	{
-		free(matrix[j]);
-		j++;
-	}
-	free(matrix);
-	matrix = NULL;
 }

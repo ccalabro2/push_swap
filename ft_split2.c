@@ -1,10 +1,11 @@
-//modificare
-void	ft_cpy(char *dst, char *src, int start, int len)
+#include "push_swap.h"
+
+void	ft_cpy(char *dst, char *src, int start, int len_word)
 {
 	int	i;
 
 	i = 0;
-	while (i < len && src[i])
+	while (i < len_word && src[i])
 	{
 		dst[i] = src[start + i];
 		i++;
@@ -12,7 +13,6 @@ void	ft_cpy(char *dst, char *src, int start, int len)
 	dst[i] = '\0';
 }
 
-//modificare
 char	**ft_split_modified_for_argv(char *str)
 {
 	char	**output;
@@ -21,7 +21,7 @@ char	**ft_split_modified_for_argv(char *str)
 	n_words = count_words(str);
 	if (n_words == 0)
 		return (NULL);
-	output = create_matrix_like_real_argv(n_words);
+	output = matrix_argv(n_words);
 	if (output == NULL)
 		return (NULL);
 	fill_matrix(str, output, n_words);
