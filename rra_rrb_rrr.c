@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rra_rrb_rrr.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccalabro <ccalabro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/11 19:34:21 by ccalabro          #+#    #+#             */
+/*   Updated: 2025/01/11 19:49:22 by ccalabro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_reverse_rotate(t_stack **head)
@@ -6,7 +18,7 @@ void	ft_reverse_rotate(t_stack **head)
 
 	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return ;
-	last = find_last_node(*head);
+	last = ft_last_node(*head);
 	last -> next = (*head);
 	*head = last;
 	(*head)->prev->next = NULL;

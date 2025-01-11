@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split2.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccalabro <ccalabro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 19:33:42 by ccalabro          #+#    #+#             */
-/*   Updated: 2025/01/11 19:35:44 by ccalabro         ###   ########.fr       */
+/*   Created: 2025/01/11 19:32:46 by ccalabro          #+#    #+#             */
+/*   Updated: 2025/01/11 19:34:50 by ccalabro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_cpy(char *dst, char *src, int start, int len_word)
+long	ft_atoi(const char *str)
 {
-	int	i;
+	long	num;
+	int		mult_neg;
+	int		i;
 
+	num = 0;
+	mult_neg = 1;
 	i = 0;
-	while (i < len_word && src[i])
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'
+			|| str[i] == '\n' || str[i] == '\r'
+			|| str[i] == '\v' || str[i] == '\f'))
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
 	{
-		dst[i] = src[start + i];
+		mult_neg *= -1;
 		i++;
 	}
-	dst[i] = '\0';
-}
-
-char	**ft_split_argv(char *str)
-{
-	char	**output;
-	int		n_words;
-
-	n_words = count_words(str);
-	if (n_words == 0)
-		return (NULL);
-	output = matrix_argv(n_words);
-	if (output == NULL)
-		return (NULL);
-	fill_matrix(str, output, n_words);
-	return (output);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = (num * 10) + (str[i] - '0');
+		i++;
+	}
+	return (num * mult_neg);
 }

@@ -1,7 +1,7 @@
 NAME = push_swap
 ARCH = push_swap.a
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 MAKE_LIB = ar -rcs
 
 SRCS = $(wildcard *.c)
@@ -15,9 +15,9 @@ $(NAME) : $(ARCH)
 $(ARCH) : $(OBJS)
 	$(MAKE_LIB) $(ARCH) $^
 
-%.o : %.c 
-	$(CC) $(CFLAGS) -c $< -o $@ 
-	
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean :
 	rm -f $(OBJS) $(ARCH)
 

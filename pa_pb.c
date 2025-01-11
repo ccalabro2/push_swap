@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pa_pb.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccalabro <ccalabro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/11 19:33:53 by ccalabro          #+#    #+#             */
+/*   Updated: 2025/01/11 20:18:26 by ccalabro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_if_dest_null(t_stack **dest, t_stack **src)
@@ -5,9 +17,9 @@ void	ft_if_dest_null(t_stack **dest, t_stack **src)
 	if ((*src)->next == NULL)
 	{
 		*dest = *src;
-		*src = NULL;           
 		(*dest)->next = NULL;
 		(*dest)->prev = NULL;
+		*src = NULL;
 	}
 	else
 	{
@@ -15,12 +27,12 @@ void	ft_if_dest_null(t_stack **dest, t_stack **src)
 		*src = (*src)->next;
 		(*dest)->next = NULL;
 		(*dest)->prev = NULL;
-		(*src)->prev = NULL; 	
+		(*src)->prev = NULL;
 	}
 }
 
 void	ft_else_dest_null(t_stack **dest, t_stack **src)
-{   
+{
 	if ((*src)->next == NULL)
 	{
 		(*src)->next = *dest;
@@ -38,7 +50,7 @@ void	ft_else_dest_null(t_stack **dest, t_stack **src)
 	}
 }
 
-void    ft_push(t_stack **dest, t_stack **src)
+void	ft_push(t_stack **dest, t_stack **src)
 {
 	if ((src == NULL) || (*src == NULL))
 		return ;

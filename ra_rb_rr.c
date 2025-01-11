@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ra_rb_rr.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ccalabro <ccalabro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/11 19:34:10 by ccalabro          #+#    #+#             */
+/*   Updated: 2025/01/11 19:49:22 by ccalabro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_rotate(t_stack **head)
@@ -6,7 +18,7 @@ void	ft_rotate(t_stack **head)
 
 	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return ;
-	last = find_last_node(*head);
+	last = ft_last_node(*head);
 	last->next = *head;
 	*head = (*head)->next;
 	last->next->prev = last;
@@ -32,4 +44,3 @@ void	rr(t_stack **a, t_stack **b)
 	ft_rotate(b);
 	write(1, "rr\n", 3);
 }
-
